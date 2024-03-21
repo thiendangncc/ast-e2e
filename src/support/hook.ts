@@ -1,6 +1,15 @@
 "use strict";
+import { BeforeStep, setWorldConstructor } from '@cucumber/cucumber';
 import { AppConfig } from '../app.config';
 import { getDriver } from './driver';
+import logger from './logger';
+import {
+  getGherkinScenarioMap,
+  getGherkinStepMap,
+} from '@cucumber/cucumber/lib/formatter/helpers/gherkin_document_parser';
+import { getStepKeyword } from '@cucumber/cucumber/lib/formatter/helpers/pickle_parser';
+import { CustomWorld } from './World';
+
 require("chromedriver");
 
 const fs = require("fs");
@@ -51,26 +60,43 @@ async function tryAttachScreenshot(world, scenario) {
   }
 }
 
+setWorldConstructor(CustomWorld);
+
 BeforeAll(async () => {
+  logger.init();
   console.log("Before All Navigating to: " + AppConfig.appUrl);
   await getDriver().navigate().to(AppConfig.appUrl);
 });
 
 
 Before(async function (scenario) {
-
+  this.attachLogger(logger);
+  this.gherkinScenarioMap = getGherkinScenarioMap(scenario.gherkinDocument);
+  this.gherkinStepMap = getGherkinStepMap(scenario.gherkinDocument);
+  console.log(`[Scenario]: ${scenario.pickle.name}`);
 });
 
 After(async function (scenario) {
-  console.log(`Scenario - ${scenario.pickle.name} - ${scenario.result.status}`);
+  scenario?.result?.message && console.log(scenario.result.message);
+  console.log(`[${scenario.result.status} - Scenario]: ${scenario.pickle.name}`);
   if (scenario.result.status === "FAILED") {
     await tryAttachScreenshot(this, scenario);
-    console.log(`Scenario - ${scenario.pickle.name} - FAILED`);
   }
+  this.takeLogSnapshot();
+  this.detachLogger();
 });
 
 AfterAll(async function () {
   // perform some shared teardown
   await getDriver().manage().deleteAllCookies();
   await getDriver().quit();
+});
+
+BeforeStep(async function (step) {
+  console.log(
+    `[Step]: ${getStepKeyword({
+      ...step,
+      gherkinStepMap: this.gherkinStepMap,
+    })}${step.pickleStep.text}`,
+  );
 });

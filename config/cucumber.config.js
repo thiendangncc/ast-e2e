@@ -7,7 +7,7 @@ module.exports = {
     paths: ["src/features/*.{feature,feature.md}"],
     require: ["src/stepDefinitions/*", "src/support/*"],
     parallel: 1,
-    format: ["json:test-reports/results/report.json", "@cucumber/pretty-formatter"],
+    format: ["json:test-reports/results/report.json"],
     tags: tags ? tags : "not @pending",
     formatOptions: { "colorsEnabled": true }
   },
