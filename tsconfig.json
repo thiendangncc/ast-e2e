@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                       /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
+    "module": "commonjs",
+    // "lib": ["ESNext"],
+    "skipLibCheck": true,
+    "types": ["node", "selenium-webdriver", "bluebird"],
+    "typeRoots": ["node_modules/@types"],
+    "sourceMap": true,
+    "outDir": "./dist",
+    "moduleResolution": "Node",
+    "removeComments": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "strictFunctionTypes": false,
+    "noImplicitThis": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    // "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "declarationMap": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "ts-node": {
+    // Do not forget to `npm i -D tsconfig-paths`
+    "require": ["tsconfig-paths/register"]
+  },
+  "exclude": ["node_modules", "reports"],
+  "include": [
+    "src/*",
+    "**/*.ts",
+    "**/*.js"
+  ]
+}

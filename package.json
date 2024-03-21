@@ -1,0 +1,43 @@
+{
+  "name": "ncc-ittools-e2e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run clean && cucumber-js --config config/cucumber.config.js",
+    "test:report": "npm run test & node scripts/generateReport.js",
+    "clean": "rm -rf test-reports"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://ops.nccsoft.vn:22/DefaultCollection/NCC-ITTools/_git/NCC-ITTools-E2E"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [
+    "selenium",
+    "cucumber",
+    "chai"
+  ],
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/register": "^7.21.0",
+    "@cucumber/cucumber": "^8.11.1",
+    "@cucumber/pretty-formatter": "^1.0.0",
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "chai": "^4.3.7",
+    "chromedriver": "^120.0.1",
+    "cucumber-html-reporter": "^5.5.0",
+    "eslint": "^8.34.0",
+    "imap": "^0.8.19",
+    "quoted-printable": "^1.0.1",
+    "selenium-webdriver": "^4.4.0",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "phantomjs-prebuilt": "^2.1.16",
+    "ts-node": "^10.9.2"
+  }
+}
