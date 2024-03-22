@@ -5,7 +5,7 @@ export const AppConfig = {
   browserName: process.env.BROWSER || "chrome-headless",
   width: process.env.WIDTH || 1920,
   height: process.env.HEIGHT || 1080,
-  implicitWait: +process.env.IMPLICIT_WAIT || 0,
+  implicitWait: +process.env.IMPLICIT_WAIT || 10000,
   pageLoadWait: +process.env.PAGE_LOAD_WAIT || 15000,
   waitInterval: +process.env.WAIT_INTERVAL || 1000
 }

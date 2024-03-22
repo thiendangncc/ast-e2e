@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run clean && cucumber-js --config config/cucumber.config.js",
+    "test:feature": "npm run clean && cucumber-js --config config/cucumber.config.js -p feature",
     "test:report": "npm run test & node scripts/generateReport.js",
     "clean": "rm -rf test-reports"
   },

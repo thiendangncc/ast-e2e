@@ -14,12 +14,12 @@ export class HtmlElementCollection extends BaseElement {
     return this.findElements();
   }
 
-  get(index) {
-    return this.findElementByIndex(index);
+  private findElements(): Promise<Array<WebElement>> {
+    return this.driver.findElements(this.byFn(this.selector));
   }
 
-  findElements(): Promise<Array<WebElement>> {
-    return this.driver.findElements(this.byFn(this.selector));
+  get(index) {
+    return this.findElementByIndex(index);
   }
 
   findElementByIndex(index) {
@@ -81,6 +81,10 @@ export class HtmlElementCollection extends BaseElement {
 
   static by(cssSelector) {
     return new HtmlElementCollection(cssSelector, By.css);
+  }
+
+  static byXpath(xpathSelector) {
+    return new HtmlElementCollection(xpathSelector, By.xpath);
   }
 
   // todo check
