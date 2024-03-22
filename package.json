@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run clean && cucumber-js --config config/cucumber.config.js",
-    "test:feature": "npm run clean && cucumber-js --config config/cucumber.config.js -p feature",
+    "test:feature": "cucumber-js --config config/cucumber.config.js -p feature",
     "test:report": "npm run test & node scripts/generateReport.js",
     "clean": "rm -rf test-reports"
   },
@@ -28,7 +28,7 @@
     "@cucumber/pretty-formatter": "^1.0.0",
     "babel-plugin-add-module-exports": "^1.0.4",
     "chai": "^4.3.7",
-    "chromedriver": "^122.0.1",
+    "chromedriver": "^123",
     "cucumber-html-reporter": "^5.5.0",
     "eslint": "^8.34.0",
     "imap": "^0.8.19",
