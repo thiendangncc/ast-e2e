@@ -188,4 +188,10 @@ export class HTMLElement extends BaseElement {
       return getDriver().findElement(By.css(cssSelector))
     })
   }
+
+  static byXpath(xpathSelector) {
+    return new this(xpathSelector, () => {
+      return getDriver().findElement(By.xpath(xpathSelector))
+    })
+  }
 }

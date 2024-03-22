@@ -1,6 +1,5 @@
 import { BaseComponent } from "../BaseComponent";
 import { HTMLElement } from "./HtmlElement";
-import { HtmlElementCollection } from "./HtmlElementCollection";
 
 export class Pagination extends BaseComponent {
   parent: HTMLElement;
