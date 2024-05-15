@@ -3,6 +3,7 @@ import { getDriver } from "../../../support/driver";
 import { BaseElement } from "./BaseElement";
 import { HtmlElementCollection } from "./HtmlElementCollection";
 const AsyncFunction = (async () => {}).constructor;
+type Constructor<T> = { new (selector, fn): T }
 
 export class HTMLElement extends BaseElement {
   public findElementFn: () => WebElementPromise | WebElement;
@@ -183,13 +184,13 @@ export class HTMLElement extends BaseElement {
     })
   }
 
-  static by(cssSelector) {
+  static by<T extends HTMLElement>(this: Constructor<T>, cssSelector): T {
     return new this(cssSelector, () => {
       return getDriver().findElement(By.css(cssSelector))
     })
   }
 
-  static byXpath(xpathSelector) {
+  static byXpath<T extends HTMLElement>(this: Constructor<T>, xpathSelector) {
     return new this(xpathSelector, () => {
       return getDriver().findElement(By.xpath(xpathSelector))
     })
