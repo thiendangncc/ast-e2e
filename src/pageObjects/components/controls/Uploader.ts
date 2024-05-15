@@ -2,8 +2,8 @@ import { FormControl } from "./FormControl";
 
 export class Uploader extends FormControl {
   // override
-  async type(text) {
+  async selectFile(imagePath: string) {
     await this.waitVisible();
-    throw new Error(`Not implement now ${text}`);
+    this.type(`../../../../${imagePath}`)
   }
 }
