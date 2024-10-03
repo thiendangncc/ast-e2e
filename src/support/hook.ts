@@ -65,7 +65,7 @@ setWorldConstructor(CustomWorld);
 BeforeAll(async () => {
   logger.init();
   console.log("Before All Navigating to: " + AppConfig.appUrl);
-  await getDriver().navigate().to(AppConfig.appUrl);
+  // await getDriver().navigate().to(AppConfig.appUrl);
 });
 
 

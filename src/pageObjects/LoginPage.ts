@@ -6,8 +6,8 @@ import { HtmlElementCollection } from "./components/controls/HtmlElementCollecti
 
 export class LoginPage extends BusinessPage {
   errorLabel = HtmlElementCollection.by(".ant-form-item-explain-error");
-  loginButton = HTMLElement.by(".ant-btn-lg");
-  emailField = HTMLElement.by('#username');
+  loginButton = HTMLElement.by("button[type='submit'].common-submit");
+  emailField = HTMLElement.by('#email');
   passwordField = HTMLElement.by('#password');
 
   constructor() {
