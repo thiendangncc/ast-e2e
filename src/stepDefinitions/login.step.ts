@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import DashboardPage from '@/pageObjects/DashboardPage';
 import LoginPage from '@/pageObjects/LoginPage';
 import { TEST_DATA } from '@/data';
+import { sleepTime } from '@/utils';
 
 Given("I go to the login page successfully", async () => {
   await LoginPage.go(true);
@@ -64,3 +65,15 @@ When("I enter password as {config} in config", async function (password) {
 When("I attempt to login", async function () {
   await LoginPage.signIn();
 });
+
+When("I login with org {string} email {string} and password {string}", async function(orgId: string, email: string, password: string) {
+  // [...]
+  // fill org
+  // submit
+  await LoginPage.verifyOrg(orgId);
+  await sleepTime(3000)
+  // fill email
+  // fill password
+  // submit
+  await LoginPage.login(email, password);
+})
